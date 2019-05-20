@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name : copy nginx config file
+    copy: src=default dest=/etc/nginx/sites-available/
+  - name : restart nginx
+    service: name=nginx state=restarted
